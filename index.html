@@ -1,124 +1,46 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ашура — Косметология ❤️</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: linear-gradient(to bottom, #fff0f8, #ffffff); color: #333; }
-        header { background: #ff69b4; color: white; padding: 20px; text-align: center; }
-        nav { position: sticky; top: 0; background: #ff69b4; padding: 10px; text-align: center; z-index: 100; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        section { padding: 30px; max-width: 800px; margin: 0 auto; }
-        h1, h2, h3 { text-align: center; color: #ff1493; }
-        .procedure-gallery { margin-bottom: 50px; }
-        .carousel { position: relative; max-width: 100%; overflow: hidden; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .carousel img { width: 100%; display: none; }
-        .carousel img.active { display: block; }
-        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,105,180,0.7); color: white; border: none; padding: 15px; font-size: 24px; cursor: pointer; }
-        .prev { left: 10px; }
-        .next { right: 10px; }
-        .btn { background: #ff69b4; color: white; padding: 15px; border: none; border-radius: 10px; font-size: 18px; width: 100%; margin-top: 20px; }
-        /* Добавь свои стили если нужно */
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Ашура — Инъекционная косметология ❤️</h1>
-    </header>
+<header>
+    <div class="hero-overlay">
+        <h1>Ашура</h1>
+        <p>Black Gold Luxury Косметология</p>
+        <a href="#form" class="hero-btn">Записаться премиум ❤️</a>
+    </div>
+</header>
 
-    <nav>
-        <a href="#services">Услуги</a>
-        <a href="#gallery">До/После</a>
-        <a href="#form">Запись</a>
-    </nav>
-
-    <!-- Секция услуг (как раньше, вставь свои цены) -->
-    <section id="services">
-        <h2>Услуги и цены</h2>
-        <!-- Твои карточки -->
-    </section>
-
-    <!-- ГЛАВНАЯ ГАЛЕРЕЯ "ДО/ПОСЛЕ" ПО ПРОЦЕДУРАМ -->
-    <section id="gallery">
-        <h2>До и После моих работ ❤️</h2>
-
-        <!-- Пример для ГУБ -->
-        <div class="procedure-gallery">
-            <h3>Губы (филлеры)</h3>
-            <div class="carousel" id="lips-carousel">
-                <img src="https://via.placeholder.com/600x400?text=До+губ" class="active">
-                <img src="https://via.placeholder.com/600x400?text=После+губ+1">
-                <img src="https://via.placeholder.com/600x400?text=До+губ+2">
-                <img src="https://via.placeholder.com/600x400?text=После+губ+2">
-                <!-- ВСТАВЬ СВОИ ССЫЛКИ ЗДЕСЬ -->
-            </div>
-            <button class="carousel-btn prev" onclick="changeSlide('lips', -1)">◀</button>
-            <button class="carousel-btn next" onclick="changeSlide('lips', 1)">▶</button>
-        </div>
-
-        <!-- Пример для БОТОКСА -->
-        <div class="procedure-gallery">
-            <h3>Ботокс (морщины)</h3>
-            <div class="carousel" id="botox-carousel">
-                <img src="https://via.placeholder.com/600x400?text=До+ботокс" class="active">
-                <img src="https://via.placeholder.com/600x400?text=После+ботокс">
-                <!-- Добавь свои фото -->
-            </div>
-            <button class="carousel-btn prev" onclick="changeSlide('botox', -1)">◀</button>
-            <button class="carousel-btn next" onclick="changeSlide('botox', 1)">▶</button>
-        </div>
-
-        <!-- Пример для ПОСТАКНЕ -->
-        <div class="procedure-gallery">
-            <h3>Постакне (чистка/пилинг)</h3>
-            <div class="carousel" id="acne-carousel">
-                <img src="https://via.placeholder.com/600x400?text=До+постакне" class="active">
-                <img src="https://via.placeholder.com/600x400?text=После+постакне">
-                <!-- Добавь свои -->
-            </div>
-            <button class="carousel-btn prev" onclick="changeSlide('acne', -1)">◀</button>
-            <button class="carousel-btn next" onclick="changeSlide('acne', 1)">▶</button>
-        </div>
-
-        <!-- Добавь блоки для липолитиков, мезо и т.д. — просто копируй div.procedure-gallery -->
-    </section>
-
-    <!-- Форма записи (как раньше) -->
-    <section id="form">
-        <!-- Твоя форма -->
-    </section>
-
-    <script>
-        const tg = window.Telegram.WebApp;
-        tg.ready(); tg.expand();
-
-        // Карусель для каждой процедуры
-        const carousels = {
-            lips: document.querySelectorAll('#lips-carousel img'),
-            botox: document.querySelectorAll('#botox-carousel img'),
-            acne: document.querySelectorAll('#acne-carousel img'),
-            // Добавь новые если создашь
-        };
-
-        let indices = { lips: 0, botox: 0, acne: 0 };
-
-        function changeSlide(proc, direction) {
-            const slides = carousels[proc];
-            if (!slides) return;
-            slides[indices[proc]].classList.remove('active');
-            indices[proc] = (indices[proc] + direction + slides.length) % slides.length;
-            slides[indices[proc]].classList.add('active');
-        }
-
-        // Инициализация — показываем первое фото
-        Object.keys(carousels).forEach(proc => {
-            if (carousels[proc].length > 0) carousels[proc][0].classList.add('active');
-        });
-
-        // Форма отправки (как раньше)
-        // ... твой код формы
-    </script>
-</body>
-</html>
+<style>
+    header { 
+        position: relative; 
+        height: 100vh; 
+        background: url('hero.jpg') center/cover no-repeat; /* твоя картинка во весь экран */
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        text-align: center; 
+    }
+    .hero-overlay { 
+        position: relative; 
+        z-index: 2; 
+        color: #d4af37; /* розовое золото */
+        text-shadow: 0 0 20px #000; 
+    }
+    header::before { 
+        content: ''; 
+        position: absolute; 
+        top: 0; left: 0; width: 100%; height: 100%; 
+        background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4)); /* чёрный overlay для люкса */
+    }
+    h1 { font-size: 80px; font-family: 'Playfair Display', serif; letter-spacing: 5px; animation: glow 3s infinite alternate; }
+    @keyframes glow { from { text-shadow: 0 0 10px #d4af37; } to { text-shadow: 0 0 40px #d4af37; } }
+    header p { font-size: 30px; margin: 20px 0; }
+    .hero-btn { 
+        display: inline-block; 
+        background: #d4af37; 
+        color: #000; 
+        padding: 20px 50px; 
+        border-radius: 50px; 
+        font-size: 24px; 
+        text-decoration: none; 
+        margin-top: 40px; 
+        transition: 0.3s; 
+    }
+    .hero-btn:hover { background: #fff; color: #000; box-shadow: 0 0 30px #d4af37; }
+</style>
