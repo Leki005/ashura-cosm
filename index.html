@@ -11,7 +11,7 @@
         header { 
             position: relative; 
             height: 100vh; 
-            background: url('hero.jpg') center/cover no-repeat fixed; /* твоя картинка во весь экран */
+            background: url('hero.jpg') center top / cover no-repeat fixed; /* губы сверху, без обрезки! */
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -21,44 +21,60 @@
             content: ''; 
             position: absolute; 
             top: 0; left: 0; width: 100%; height: 100%; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6)); /* глубокий чёрный overlay для вау */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.5)); 
         }
         .hero-content { position: relative; z-index: 2; }
         h1 { 
             font-family: 'Cinzel', serif; 
             font-size: 100px; 
-            color: #b76e79; /* розовое золото */
-            letter-spacing: 10px; 
-            text-shadow: 0 0 40px rgba(183,110,121,0.8); 
+            color: #b76e79; 
+            letter-spacing: 15px; 
+            text-shadow: 0 0 50px rgba(183,110,121,0.8); 
             animation: glow 4s infinite alternate; 
         }
-        @keyframes glow { 
-            from { text-shadow: 0 0 20px #b76e79; } 
-            to { text-shadow: 0 0 60px #b76e79, 0 0 80px #b76e79; } 
-        }
-        header p { font-size: 32px; margin: 30px 0; font-weight: 300; opacity: 0.9; }
+        @keyframes glow { from { text-shadow: 0 0 20px #b76e79; } to { text-shadow: 0 0 70px #b76e79; } }
         .hero-btn { 
             display: inline-block; 
-            background: linear-gradient(to right, #b76e79, #d4af37); /* градиент розовое золото */
+            background: linear-gradient(to right, #b76e79, #d4af37); 
             color: #000; 
-            padding: 25px 70px; 
-            border-radius: 50px; 
-            font-size: 28px; 
+            padding: 30px 80px; 
+            border-radius: 60px; 
+            font-size: 30px; 
             font-weight: bold; 
             text-decoration: none; 
-            box-shadow: 0 0 50px rgba(183,110,121,0.6); 
+            box-shadow: 0 0 60px rgba(183,110,121,0.7); 
             transition: 0.4s; 
         }
-        .hero-btn:hover { 
-            background: #fff; 
-            color: #000; 
-            box-shadow: 0 0 80px #b76e79; 
-            transform: scale(1.08); 
+        .hero-btn:hover { background: #fff; box-shadow: 0 0 90px #b76e79; transform: scale(1.1); }
+        nav { 
+            position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 25px; text-align: center; z-index: 1000; backdrop-filter: blur(20px); 
         }
-        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 20px; text-align: center; z-index: 1000; backdrop-filter: blur(20px); }
-        nav a { color: #b76e79; margin: 0 50px; font-size: 22px; text-decoration: none; transition: 0.3s; }
-        nav a:hover { color: #fff; text-shadow: 0 0 30px #b76e79; }
-        /* Остальной сайт (галерея, форма) — добавь из предыдущих кодов */
+        nav a { 
+            color: #b76e79; margin: 0 80px; font-family: 'Cinzel', serif; font-size: 28px; text-decoration: none; text-transform: uppercase; letter-spacing: 10px; transition: 0.4s; position: relative; 
+        }
+        nav a::after { content: ''; position: absolute; bottom: -10px; left: 50%; width: 0; height: 2px; background: #b76e79; transition: 0.4s; transform: translateX(-50%); }
+        nav a:hover { color: #fff; text-shadow: 0 0 40px #b76e79; }
+        nav a:hover::after { width: 80%; }
+        section { padding: 120px 20px; text-align: center; }
+        h2 { font-family: 'Cinzel', serif; font-size: 60px; color: #b76e79; margin-bottom: 80px; text-shadow: 0 0 30px rgba(183,110,121,0.5); }
+        .gallery { column-count: 3; column-gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .gallery-item { break-inside: avoid; margin-bottom: 40px; overflow: hidden; border-radius: 25px; box-shadow: 0 15px 40px rgba(183,110,121,0.4); transition: transform 0.5s; }
+        .gallery-item:hover { transform: scale(1.05); }
+        .gallery-item img, .gallery-item video { width: 100%; border-radius: 25px; }
+        .caption { padding: 20px; font-size: 20px; background: rgba(0,0,0,0.7); color: #b76e79; }
+        /* FAQ аккордеон */
+        .faq { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 20px; }
+        .faq-question { background: rgba(183,110,121,0.2); padding: 20px; cursor: pointer; font-size: 22px; text-align: left; border-radius: 15px; transition: 0.3s; }
+        .faq-question:hover { background: rgba(183,110,121,0.4); }
+        .faq-answer { display: none; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 15px; margin-top: 10px; text-align: left; }
+        /* Форма */
+        #form form { max-width: 600px; margin: 0 auto; background: rgba(0,0,0,0.6); padding: 60px; border-radius: 30px; box-shadow: 0 0 70px rgba(183,110,121,0.5); }
+        label { display: block; margin-top: 30px; font-size: 20px; color: #b76e79; }
+        input, select, textarea { width: 100%; padding: 15px; background: transparent; border: 2px solid #b76e79; border-radius: 15px; color: #fff; font-size: 18px; }
+        .btn { background: linear-gradient(to right, #b76e79, #d4af37); color: #000; padding: 25px; border: none; border-radius: 50px; font-size: 28px; margin-top: 50px; cursor: pointer; box-shadow: 0 0 60px rgba(183,110,121,0.8); transition: 0.4s; }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 0 90px #b76e79; }
+        footer { padding: 60px; background: #000; color: #b76e79; font-size: 20px; }
     </style>
 </head>
 <body>
@@ -71,15 +87,88 @@
 
     <nav>
         <a href="#gallery">До/После</a>
-        <a href="#services">Услуги</a>
+        <a href="#faq">FAQ</a>
         <a href="#form">Запись</a>
     </nav>
 
-    <!-- Твои секции галереи, услуг, формы — вставь из старого кода -->
+    <section id="gallery">
+        <h2>До/После</h2>
+        <div class="gallery">
+            <!-- Твои фото/видео — добавь/замени -->
+            <div class="gallery-item">
+                <img src="524248604887597724.jpg">
+                <div class="caption">До</div>
+            </div>
+            <div class="gallery-item">
+                <img src="5258443067856382498.jpg">
+                <div class="caption">После губ</div>
+            </div>
+            <div class="gallery-item">
+                <video src="IMG_0023.MOV" controls></video>
+                <div class="caption">Видео результата</div>
+            </div>
+            <!-- Добавь остальные jpg -->
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>FAQ — Часто задаваемые вопросы</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block'">Сколько держится результат?</div>
+                <div class="faq-answer">Заполни свой ответ ❤️</div>
+            </div>
+            <!-- Добавь свои вопросы/ответы -->
+        </div>
+    </section>
+
+    <section id="form">
+        <h2>Запись</h2>
+        <form>
+            <label>Процедура</label>
+            <input type="text" id="procedure" required>
+
+            <label>Имя</label>
+            <input type="text" id="name" required>
+
+            <label>Возраст</label>
+            <input type="number" id="age" required>
+
+            <label>Телефон</label>
+            <input type="tel" id="phone" required>
+
+            <!-- Добавь остальные поля -->
+
+            <button type="button" class="btn" id="send" disabled>Отправить</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>AshuraCosm — Black Gold Luxury ❤️</p>
+    </footer>
 
     <script>
         const tg = window.Telegram.WebApp;
         tg.ready(); tg.expand();
+
+        // Валидация формы
+        const inputs = document.querySelectorAll('input[required]');
+        inputs.forEach(input => input.addEventListener('input', () => {
+            document.getElementById('send').disabled = [...inputs].some(i => !i.value.trim());
+        }));
+
+        // Отправка
+        document.getElementById('send').onclick = () => {
+            const data = {
+                procedure: document.getElementById('procedure').value.trim(),
+                name: document.getElementById('name').value.trim(),
+                age: document.getElementById('age').value,
+                phone: document.getElementById('phone').value.trim()
+                // Добавь остальные
+            };
+            tg.sendData(JSON.stringify(data));
+            tg.close();
+        };
     </script>
 </body>
 </html>
