@@ -1,46 +1,85 @@
-<header>
-    <div class="hero-overlay">
-        <h1>Ашура</h1>
-        <p>Black Gold Luxury Косметология</p>
-        <a href="#form" class="hero-btn">Записаться премиум ❤️</a>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AshuraCosm</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; padding: 0; background: #000; color: #b76e79; font-family: 'Montserrat', sans-serif; }
+        header { 
+            position: relative; 
+            height: 100vh; 
+            background: url('hero.jpg') center/cover no-repeat fixed; /* твоя картинка во весь экран */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+        }
+        header::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6)); /* глубокий чёрный overlay для вау */
+        }
+        .hero-content { position: relative; z-index: 2; }
+        h1 { 
+            font-family: 'Cinzel', serif; 
+            font-size: 100px; 
+            color: #b76e79; /* розовое золото */
+            letter-spacing: 10px; 
+            text-shadow: 0 0 40px rgba(183,110,121,0.8); 
+            animation: glow 4s infinite alternate; 
+        }
+        @keyframes glow { 
+            from { text-shadow: 0 0 20px #b76e79; } 
+            to { text-shadow: 0 0 60px #b76e79, 0 0 80px #b76e79; } 
+        }
+        header p { font-size: 32px; margin: 30px 0; font-weight: 300; opacity: 0.9; }
+        .hero-btn { 
+            display: inline-block; 
+            background: linear-gradient(to right, #b76e79, #d4af37); /* градиент розовое золото */
+            color: #000; 
+            padding: 25px 70px; 
+            border-radius: 50px; 
+            font-size: 28px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            box-shadow: 0 0 50px rgba(183,110,121,0.6); 
+            transition: 0.4s; 
+        }
+        .hero-btn:hover { 
+            background: #fff; 
+            color: #000; 
+            box-shadow: 0 0 80px #b76e79; 
+            transform: scale(1.08); 
+        }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.95); padding: 20px; text-align: center; z-index: 1000; backdrop-filter: blur(20px); }
+        nav a { color: #b76e79; margin: 0 50px; font-size: 22px; text-decoration: none; transition: 0.3s; }
+        nav a:hover { color: #fff; text-shadow: 0 0 30px #b76e79; }
+        /* Остальной сайт (галерея, форма) — добавь из предыдущих кодов */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero-content">
+            <h1>AshuraCosm</h1>
+            <a href="#form" class="hero-btn">Записаться премиум ❤️</a>
+        </div>
+    </header>
 
-<style>
-    header { 
-        position: relative; 
-        height: 100vh; 
-        background: url('hero.jpg') center/cover no-repeat; /* твоя картинка во весь экран */
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        text-align: center; 
-    }
-    .hero-overlay { 
-        position: relative; 
-        z-index: 2; 
-        color: #d4af37; /* розовое золото */
-        text-shadow: 0 0 20px #000; 
-    }
-    header::before { 
-        content: ''; 
-        position: absolute; 
-        top: 0; left: 0; width: 100%; height: 100%; 
-        background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4)); /* чёрный overlay для люкса */
-    }
-    h1 { font-size: 80px; font-family: 'Playfair Display', serif; letter-spacing: 5px; animation: glow 3s infinite alternate; }
-    @keyframes glow { from { text-shadow: 0 0 10px #d4af37; } to { text-shadow: 0 0 40px #d4af37; } }
-    header p { font-size: 30px; margin: 20px 0; }
-    .hero-btn { 
-        display: inline-block; 
-        background: #d4af37; 
-        color: #000; 
-        padding: 20px 50px; 
-        border-radius: 50px; 
-        font-size: 24px; 
-        text-decoration: none; 
-        margin-top: 40px; 
-        transition: 0.3s; 
-    }
-    .hero-btn:hover { background: #fff; color: #000; box-shadow: 0 0 30px #d4af37; }
-</style>
+    <nav>
+        <a href="#gallery">До/После</a>
+        <a href="#services">Услуги</a>
+        <a href="#form">Запись</a>
+    </nav>
+
+    <!-- Твои секции галереи, услуг, формы — вставь из старого кода -->
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready(); tg.expand();
+    </script>
+</body>
+</html>
